@@ -157,6 +157,7 @@ $WSUSPublisher = $WSUSServer.GetPublisher($sdpTempFile)
 #$WSUSPublisher.VerifyAndPublishPackage(
 if ($Test -eq $false) {
 	$WSUSPublisher.PublishPackage( (Get-Item $Executable).DirectoryName.ToString() ,$null)
+	Remove-Item $sdpTempFile
 	if ($Approve -eq $true) {
 		approveUpdate($sdp.PackageId)
 	}
@@ -170,5 +171,5 @@ if ($Test -eq $false) {
 	$rowsAffected = $SQLCommand.ExecuteNonQuery()
 	$SQLConnection.Close()
 	#$rowsAffected
+ 
 }
-Remove-Item $sdpTempFile
