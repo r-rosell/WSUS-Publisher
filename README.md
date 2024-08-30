@@ -19,5 +19,8 @@ Die Regeln, um zu erkennen, ob die Software installiert ist, bzw. installiert we
 Ich gehe in den meisten Fällen File-basiert vor und prüfe auf Vorhandensein des aktuellen Programms und vegleiche die File-Version der vorhandenen .exe mit der neuen Version.
 
 Ketarin läuft täglich als geplanter Task und holt die aktuellen Versionen.
-Als Post-Download-Script rufe ich dann mein Script auf:
-`E:\Update2WSUS\PublishUpdate.ps1 -Executable $app.CurrentLocation  -Version $app.variables.ReplaceAllInString("{version}") -AppName $app.Name -Approve $true | Out-File E:\update2WSUS\$app.log`
+Es wurde überall noch eine Variable `version` hinzugefügt.
+Als Post-Download-Script rufe ich dann mein Powershell-Script auf:
+`\path\to\PublishUpdate.ps1 -Executable $app.CurrentLocation  -Version $app.variables.ReplaceAllInString("{version}") -AppName $app.Name -Approve $true | Out-File \path\to\$app.log`
+
+
